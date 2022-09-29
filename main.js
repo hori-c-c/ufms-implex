@@ -8,7 +8,7 @@ const fs = require('fs')
 const path = require('path')
 
 const arguments = process.argv
-const inc = parseInt(arguments[2]) || 1000
+const inc = parseInt(arguments[2]) || 10000
 const fim = parseInt(arguments[3]) || 20000
 const spt = parseInt(arguments[4]) || 1000
 const rpt = parseInt(arguments[5]) || 10

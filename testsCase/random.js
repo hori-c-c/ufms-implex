@@ -2,7 +2,14 @@ const { normalize, randomInt } = require('../utils')
 const { performance } = require('perf_hooks')
 const testCase = 'RANDOM'
 
-
+/**
+ * @param {Number} howManyPositions Tamanho do vetor a ser criado;
+ * @param {Number} maxRandomNumber Inteiro máximo que pode fazer parte de um caso de teste;
+ * @param {Object} resultsTime Objeto a armazenar os tempos de cada caso de teste;
+ * @param {Number} rpt O número de vezes que será repetido o teste aleatório;
+ * @param {Object} sortingAlgorithms Todos os algoritmos de ordenação;
+ * @returns void.
+ */
 function randomTest(howManyPositions, maxRandomNumber, resultsTime, rpt, sortingAlgorithms) {
     const testArrays = []
     let higherNumber, smallestNumber

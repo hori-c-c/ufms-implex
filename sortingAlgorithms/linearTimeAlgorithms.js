@@ -73,7 +73,6 @@ function bucketSort(array) {
     }
     
     return bucketArray.flat(1)
-    // return bucketArray
 }
 
 module.exports = { countingSort, radixSort, bucketSort }

@@ -2,7 +2,13 @@ const { randomInt, normalize } = require('../utils')
 const { performance } = require('perf_hooks')
 const testCase = 'NEARLY SORTED'
 
-
+/**
+ * @param {Number} howManyPositions Tamanho do vetor a ser criado;
+ * @param {Number} maxRandomNumber Inteiro máximo que pode fazer parte de um caso de teste;
+ * @param {Object} resultsTime Objeto a armazenar os tempos de cada caso de teste;
+ * @param {Object} sortingAlgorithms Todos os algoritmos de ordenação;
+ * @returns void.
+ */
 function nearlySortedTest(howManyPositions, maxRandomNumber, resultsTime, sortingAlgorithms) {
     const nearlySortedArray = []
     let counter = 0
