@@ -3,11 +3,11 @@ const { performance } = require('perf_hooks')
 const testCase = 'SORTED'
 
 
-function sortedTest(howManyPositions, resultsTime, sortingAlgorithms) {
+function sortedTest(howManyPositions, maxRandomNumber, resultsTime, sortingAlgorithms) {
     const sortedArray = []
 
     for(let position = 0; position < howManyPositions; position++)
-        sortedArray.push(randomInt())
+        sortedArray.push(randomInt(maxRandomNumber))
 
     sortingAlgorithms['Heap'][0](sortedArray)
     const higherNumber = sortedArray[sortedArray.length - 1]

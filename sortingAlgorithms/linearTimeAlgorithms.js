@@ -8,11 +8,9 @@ function countingSort(array, k, d = -1) {
     if(d == -1)
         arrayCopy = array.slice() //Making a non reference copy
     else {
-        // console.time('radix')
         radixAux = array.slice() //Making a non reference copy
         for(let i = 0; i < radixAux.length; i++)
             arrayCopy.push(getDigit(radixAux[i], d))
-        // console.timeEnd('radix')
     }
         
     

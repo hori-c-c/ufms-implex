@@ -3,12 +3,12 @@ const { performance } = require('perf_hooks')
 const testCase = 'NEARLY SORTED'
 
 
-function nearlySortedTest(howManyPositions, resultsTime, sortingAlgorithms) {
+function nearlySortedTest(howManyPositions, maxRandomNumber, resultsTime, sortingAlgorithms) {
     const nearlySortedArray = []
     let counter = 0
 
     for(let position = 0; position < howManyPositions; position++)
-        nearlySortedArray.push(randomInt())
+        nearlySortedArray.push(randomInt(maxRandomNumber))
 
     sortingAlgorithms['Heap'][0](nearlySortedArray)
     const higherNumber = nearlySortedArray[nearlySortedArray.length - 1]

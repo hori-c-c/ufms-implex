@@ -3,18 +3,18 @@ const { performance } = require('perf_hooks')
 const testCase = 'REVERSE'
 
 
-function reverseTest(howManyPositions, resultsTime, sortingAlgorithms) {
+function reverseTest(howManyPositions, maxRandomNumber, resultsTime, sortingAlgorithms) {
     const randomArray = []
     const reverseArray = []
 
     for(let position = 0; position < howManyPositions; position++)
-        randomArray.push(randomInt())
+        randomArray.push(randomInt(maxRandomNumber))
 
     sortingAlgorithms['Heap'][0](randomArray)
     const higherNumber = randomArray[randomArray.length - 1]
     const smallestNumber = randomArray[0]
 
-    for(let i = randomArray.length -1; i>=0; i--)
+    for(let i = randomArray.length -1; i >= 0; i--)
         reverseArray.push(randomArray[i])
 
     for(const sortMethod in sortingAlgorithms) {

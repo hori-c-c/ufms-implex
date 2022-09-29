@@ -3,7 +3,7 @@ const { performance } = require('perf_hooks')
 const testCase = 'RANDOM'
 
 
-function randomTest(howManyPositions, resultsTime, rpt, sortingAlgorithms) {
+function randomTest(howManyPositions, maxRandomNumber, resultsTime, rpt, sortingAlgorithms) {
     const testArrays = []
     let higherNumber, smallestNumber
     
@@ -13,7 +13,7 @@ function randomTest(howManyPositions, resultsTime, rpt, sortingAlgorithms) {
         smallestNumber = 70000
 
         for(let position = 0; position < howManyPositions; position++) {
-            const number = randomInt()
+            const number = randomInt(maxRandomNumber)
             randomArray.push(number)
             if(number > higherNumber)
                 higherNumber = number

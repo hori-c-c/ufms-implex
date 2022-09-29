@@ -12,6 +12,7 @@ const inc = parseInt(arguments[2]) || 1000
 const fim = parseInt(arguments[3]) || 20000
 const spt = parseInt(arguments[4]) || 1000
 const rpt = parseInt(arguments[5]) || 10
+const maxRandomNumber = parseInt(arguments[6]) || 65535
 const resultsTime = {
     'RANDOM': {},
     'REVERSE': {},
@@ -21,10 +22,10 @@ const resultsTime = {
 let howManyTests = 0
 
 for(let howManyPositions = inc; howManyPositions <= fim; howManyPositions += spt) {
-    randomTest(howManyPositions, resultsTime, rpt, sortingAlgorithms)
-    reverseTest(howManyPositions, resultsTime, sortingAlgorithms)
-    sortedTest(howManyPositions, resultsTime, sortingAlgorithms)
-    nearlySortedTest(howManyPositions, resultsTime, sortingAlgorithms)
+    randomTest(howManyPositions, maxRandomNumber, resultsTime, rpt, sortingAlgorithms)
+    reverseTest(howManyPositions, maxRandomNumber, resultsTime, sortingAlgorithms)
+    sortedTest(howManyPositions, maxRandomNumber, resultsTime, sortingAlgorithms)
+    nearlySortedTest(howManyPositions, maxRandomNumber, resultsTime, sortingAlgorithms)
     howManyTests ++
 }
 

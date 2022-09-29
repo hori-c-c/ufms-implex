@@ -8,7 +8,7 @@ function normalize(array, higherNumber, smallestNumber) {
     }
 }
 
-function formatText(object, time) {
+function formatText(object, howManyTests) {
     let result = ''
 
     for(const testType in object) {
@@ -19,7 +19,7 @@ function formatText(object, time) {
 
         result += '\n' + `${'-'.repeat(118)}` + '\n'
         
-        for(let i = 0; i < time; i++) {
+        for(let i = 0; i < howManyTests; i++) {
             for(const sortMethod in object[testType]) {
                 const key = Object.keys(object[testType][sortMethod])[i]
                 if(sortMethod == 'Bubble')

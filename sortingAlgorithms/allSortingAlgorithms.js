@@ -1,5 +1,7 @@
 const { bubbleSort, selectionSort, insertionSort } = require('./elementaryAlgorithms')
-const { mergeSort, heapSort, quickSort } = require('./efficientAlgorithms/efficientAlgorithms')
+const { heapSort } = require('./efficientAlgorithms/heap')
+const { mergeSort } = require('./efficientAlgorithms/merge')
+const { quickSort } = require('./efficientAlgorithms/quick')
 const { countingSort, radixSort, bucketSort } = require('./linearTimeAlgorithms')
 
 
