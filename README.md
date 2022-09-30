@@ -28,6 +28,9 @@ Os quatro primeiros parâmetros estão especificados na atividade e o último re
 
  Ao fim da execução do programa haverá uma pasta "out" localizada na raiz do projeto com um arquivo result.txt contendo os tempos de execução de cada algoritmo para cada caso de teste.
 
+ ## Gráficos 
+ Os gráficos estao localizados na pasta graphs. Foram gerados a partir do gnuplot como solicitado.
+
  ## Considerações do trabalho
 
  --> Para o algoritmo QuickSort foi utilizada a versão aleatorizada, pois para casos de teste de tamanho maior que 5000 a pilha de execução estourava.
