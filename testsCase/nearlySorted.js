@@ -1,49 +1,35 @@
-const { randomInt, normalize } = require('../utils')
-const { performance } = require('perf_hooks')
-const testCase = 'NEARLY SORTED'
+const { randomInt, setAverageExecTime } = require('../utils')
+const { quickSort } = require('../methodsFindTheKSmallestValue/quick')
 
 /**
  * @param {Number} howManyPositions Tamanho do vetor a ser criado;
- * @param {Number} maxRandomNumber Inteiro máximo que pode fazer parte de um caso de teste;
+ * @param {Object} methods Todos os métodos pra achar o k-ésimo menor elemento;
  * @param {Object} resultsTime Objeto a armazenar os tempos de cada caso de teste;
- * @param {Object} sortingAlgorithms Todos os algoritmos de ordenação;
+ * @param {Number} rpt O número de vezes que será repetido o teste aleatório;
+ * @param {Array} testArrays Arrays que serão usados nos testes;
  * @returns void.
  */
-function nearlySortedTest(howManyPositions, maxRandomNumber, resultsTime, sortingAlgorithms) {
-    const nearlySortedArray = []
-    let counter = 0
+function nearlySortedTest(howManyPositions, methods, resultsTime, rpt, testArrays) {
+    const nearlySortedTestArrays = []
+    
+    for(const array of testArrays) {
+        let counter = 0
+        const nearlySortedArray = array.slice() // Making an unreferenced copy
+        quickSort(nearlySortedArray)
 
-    for(let position = 0; position < howManyPositions; position++)
-        nearlySortedArray.push(randomInt(maxRandomNumber))
+        while(counter < Math.ceil(howManyPositions * 0.05)) {
+            const positionOne = randomInt(howManyPositions - 1)
+            const positionTwo = randomInt(howManyPositions - 1)
+            const aux = nearlySortedArray[positionOne]
+            nearlySortedArray[positionOne] = nearlySortedArray[positionTwo]
+            nearlySortedArray[positionTwo] = aux
+            counter ++
+        }
 
-    sortingAlgorithms['Heap'][0](nearlySortedArray)
-    const higherNumber = nearlySortedArray[nearlySortedArray.length - 1]
-    const smallestNumber = nearlySortedArray[0]
-
-    while(counter < Math.ceil(howManyPositions * 0.05)) {
-        const positionOne = randomInt(howManyPositions - 1)
-        const positionTwo = randomInt(howManyPositions - 1)
-        const aux = nearlySortedArray[positionOne]
-        nearlySortedArray[positionOne] = nearlySortedArray[positionTwo]
-        nearlySortedArray[positionTwo] = aux
-        counter ++
+        nearlySortedTestArrays.push(nearlySortedArray)
     }
 
-
-    for(const sortMethod in sortingAlgorithms) {
-        if(resultsTime[testCase][sortMethod] == undefined)
-            resultsTime[testCase][sortMethod] = {}
-
-        const array = nearlySortedArray.slice() // Making an unreferenced copy
-
-        if(sortMethod == 'Bucket')
-            normalize(array, higherNumber, smallestNumber)
-
-        const inicialTime = performance.now()
-        const resultArray = sortingAlgorithms[sortMethod][0](array, higherNumber)
-        const execTime = (performance.now() - inicialTime).toFixed(6).substring(0,7)
-        resultsTime[testCase][sortMethod][howManyPositions] = execTime
-    }
+    setAverageExecTime(howManyPositions, methods, resultsTime, rpt, nearlySortedTestArrays, 'NEARLY SORTED')
 }
 
 module.exports = { nearlySortedTest }

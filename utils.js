@@ -1,21 +1,11 @@
+const { performance } = require('perf_hooks')
+
 /**
  * @param {Number} maxNumber O maior número possível;
  * @returns {Number} Um número entre 0 e maxNumber.
  */
 function randomInt(maxNumber = 65535) {
     return Math.floor(Math.random() * maxNumber)
-}
-
-/**
- * @param {Array} array Vetor a ser normalizado;
- * @param {Number} higherNumber O maior elemento do vetor;
- * @param {Object} smallestNumber O menor elemento do vetor;
- * @returns void.
- */
-function normalize(array, higherNumber, smallestNumber) {
-    for(let i = 0; i < array.length; i++) {
-        array[i] = (array[i] - smallestNumber)/(higherNumber - smallestNumber + 1)
-    }
 }
 
 /**
@@ -50,4 +40,43 @@ function formatText(object, howManyTests) {
     return result
 }
 
-module.exports = { randomInt, normalize, formatText }
+function createRandomArrays(howManyPositions, maxRandomNumber, rpt) {
+    const arrays = []
+    
+    for(let counter = 0; counter < rpt; counter++) {
+        const randomArray = []
+
+        for(let position = 0; position < howManyPositions; position++) {
+            const number = randomInt(maxRandomNumber)
+            randomArray.push(number)
+        }
+
+        randomArray.push(randomInt(howManyPositions - 1) + 1)
+        arrays.push(randomArray)
+    }
+
+    return arrays
+}
+
+function setAverageExecTime(howManyPositions, methods, resultsTime, rpt, testArrays, testCase) {
+    for(const method in methods) {
+        let averageExecTime = 0
+
+        if(resultsTime[testCase][method] == undefined)
+            resultsTime[testCase][method] = {}
+
+        for(const testArray of testArrays) {
+            const array = testArray.slice() //Making a non reference copy
+            const k = array.pop()
+            const inicialTime = performance.now()
+            const kSmallestValue = methods[method][0](array, k)
+            const execTime = (performance.now() - inicialTime)
+            averageExecTime += execTime
+        }
+
+        averageExecTime = (averageExecTime/rpt).toFixed(6).substring(0,7)
+        resultsTime[testCase][method][howManyPositions] = averageExecTime
+    }
+}
+
+module.exports = { createRandomArrays, formatText, randomInt, setAverageExecTime }

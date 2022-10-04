@@ -1,12 +1,11 @@
-function quickSort(array, p, r) {
+function quickSort(array, p, r, k) {
     if(p < r) {
         const q = randomizedPartition(array, p, r)
-        // const q = partition(array, p, r)
         quickSort(array, p, q - 1)
         quickSort(array, q + 1, r)
     }
 
-    return array
+    return array[k-1]
 }
 
 function randomizedPartition(array, p, r) {

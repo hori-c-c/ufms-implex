@@ -1,6 +1,6 @@
 # Resolução da segunda lista de IMPLEX
 
-Esse projeto é a solução do nosso grupo para a segunda atividade da disciplina de Implementação Algoritmica na UFMS.
+Esse projeto é a solução do nosso grupo para a terceira atividade da disciplina de Implementação Algoritmica na UFMS.
 
 Discentes: Arthur Cabral, Horiel Costa, Rafael Guardiano.
 
