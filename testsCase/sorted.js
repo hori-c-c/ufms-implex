@@ -14,7 +14,9 @@ function sortedTest(howManyPositions, methods, resultsTime, rpt, testArrays) {
     
     for(const array of testArrays) {
         const sortedArray = array.slice() // Making an unreferenced copy
-        quickSort(sortedArray)
+        const k = sortedArray.pop()
+        quickSort(sortedArray, 0, sortedArray.length - 1)
+        sortedArray.push(k)
         sortedTestArrays.push(sortedArray)
     }
 

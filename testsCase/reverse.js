@@ -15,11 +15,13 @@ function reverseTest(howManyPositions, methods, resultsTime, rpt, testArrays) {
     for(const array of testArrays) {
         const reverseArray = []
         const randomArray = array.slice() // Making an unreferenced copy
-        quickSort(randomArray)
+        const k = randomArray.pop()
+        quickSort(randomArray, 0, randomArray.length - 1)
 
         for(let i = randomArray.length -1; i >= 0; i--)
             reverseArray.push(randomArray[i])
 
+        reverseArray.push(k)
         reverseTestArrays.push(reverseArray)
     }
 

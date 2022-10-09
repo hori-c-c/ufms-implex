@@ -15,7 +15,8 @@ function nearlySortedTest(howManyPositions, methods, resultsTime, rpt, testArray
     for(const array of testArrays) {
         let counter = 0
         const nearlySortedArray = array.slice() // Making an unreferenced copy
-        quickSort(nearlySortedArray)
+        const k = nearlySortedArray.pop()
+        quickSort(nearlySortedArray, 0, nearlySortedArray.length - 1)
 
         while(counter < Math.ceil(howManyPositions * 0.05)) {
             const positionOne = randomInt(howManyPositions - 1)
@@ -26,6 +27,7 @@ function nearlySortedTest(howManyPositions, methods, resultsTime, rpt, testArray
             counter ++
         }
 
+        nearlySortedArray.push(k)
         nearlySortedTestArrays.push(nearlySortedArray)
     }
 
