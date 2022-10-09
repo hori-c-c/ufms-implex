@@ -8,27 +8,26 @@ const fs = require('fs')
 const path = require('path')
 
 const arguments = process.argv
-const inc = parseInt(arguments[2]) || 10000
+const inc = parseInt(arguments[2]) || 1000
 const fim = parseInt(arguments[3]) || 20000
 const spt = parseInt(arguments[4]) || 1000
 const rpt = parseInt(arguments[5]) || 10
 const maxRandomNumber = parseInt(arguments[6]) || 65535
-let howManyTests = 0
-
 const resultsTime = {
     'RANDOM': {},
     'REVERSE': {},
     'SORTED': {},
     'NEARLY SORTED': {}
 }
+let howManyTests = 0
 
 
 for(let howManyPositions = inc; howManyPositions <= fim; howManyPositions += spt) {
     const testArrays = createRandomArrays(howManyPositions, maxRandomNumber, rpt)
     randomTest(howManyPositions, methods, resultsTime, rpt, testArrays)
-    reverseTest(howManyPositions, methods, resultsTime, testArrays)
-    sortedTest(howManyPositions, methods, resultsTime, testArrays)
-    nearlySortedTest(howManyPositions, methods, resultsTime, testArrays)
+    reverseTest(howManyPositions, methods, resultsTime, rpt, testArrays)
+    sortedTest(howManyPositions, methods, resultsTime, rpt, testArrays)
+    nearlySortedTest(howManyPositions, methods, resultsTime, rpt, testArrays)
     howManyTests ++
 }
 

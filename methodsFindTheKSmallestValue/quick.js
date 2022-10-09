@@ -1,8 +1,8 @@
 function quickSort(array, p, r, k) {
     if(p < r) {
         const q = randomizedPartition(array, p, r)
-        quickSort(array, p, q - 1)
-        quickSort(array, q + 1, r)
+        quickSort(array, p, q - 1, k)
+        quickSort(array, q + 1, r, k)
     }
 
     return array[k-1]
@@ -16,8 +16,8 @@ function randomizedPartition(array, p, r) {
     return partition(array, p, r)
 }
 
-function partition(array, p, r) {
-    const x = array[r]
+function partition(array, p, r, pivot = -1) {
+    const x = getPivot(array, pivot, r)
     let i = p - 1
 
     for(let j = p; j <= r - 1; j++) {
@@ -36,4 +36,15 @@ function partition(array, p, r) {
     return i + 1
 }
 
-module.exports = { quickSort }
+function getPivot(array, pivot, r) {
+    if(pivot != -1) {
+        const pivotIndex = array.findIndex(element => element == pivot)
+        const aux = array[pivotIndex]
+        array[pivotIndex] = array[r]
+        array[r] = aux
+    }
+    
+    return array[r]
+}
+
+module.exports = { partition, quickSort, randomizedPartition }
