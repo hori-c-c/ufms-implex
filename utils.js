@@ -22,12 +22,12 @@ function formatText(object, howManyTests) {
         for(const sortMethod in object[testType])
             result += `${sortMethod}` + `${' '.repeat(6 - sortMethod.length + 7)}`
 
-        result += '\n' + `${'-'.repeat(118)}` + '\n'
+        result += '\n' + `${'-'.repeat(54)}` + '\n'
         
         for(let i = 0; i < howManyTests; i++) {
             for(const sortMethod in object[testType]) {
                 const key = Object.keys(object[testType][sortMethod])[i]
-                if(sortMethod == 'Bubble')
+                if(sortMethod == 'QuickSort')
                     result += '\n' + `${key}` + `${' '.repeat(8 - key.length)}` 
 
                 result += `${object[testType][sortMethod][key]}` + `${' '.repeat(6)}`
