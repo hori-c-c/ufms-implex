@@ -12,7 +12,6 @@ function extractMin(array, k) {
             down(array, 0, heapSize)
         }
 
-        console.log(heapSize + 1)
         return array[0]
     }
 }
