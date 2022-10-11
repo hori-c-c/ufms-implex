@@ -30,7 +30,3 @@ Os quatro primeiros parâmetros estão especificados na atividade e o último re
 
  ## Gráficos 
  Os gráficos estao localizados na pasta graphs. Foram gerados a partir do gnuplot como solicitado.
-
- ## Considerações do trabalho
-
- --> Para o algoritmo QuickSort foi utilizada a versão aleatorizada, pois para casos de teste de tamanho maior que 5000 a pilha de execução estourava.

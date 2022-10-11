@@ -1,10 +1,10 @@
 const { setAverageExecTime } = require('../utils')
 
 /**
- * @param {Number} howManyPositions Tamanho do vetor a ser criado;
+ * @param {Number} howManyPositions A quantidade de posições que cada array possui;
  * @param {Object} methods Todos os métodos pra achar o k-ésimo menor elemento;
  * @param {Object} resultsTime Objeto a armazenar os tempos de cada caso de teste;
- * @param {Number} rpt O número de vezes que será repetido o teste aleatório;
+ * @param {Number} rpt A quantidade de array gerados;
  * @param {Array} testArrays Arrays que serão usados nos testes;
  * @returns void.
  */

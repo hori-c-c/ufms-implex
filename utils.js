@@ -40,6 +40,12 @@ function formatText(object, howManyTests) {
     return result
 }
 
+/**
+ * @param {Number} howManyPositions A quantidade de posições que cada array possui;
+ * @param {Number} maxRandomNumber O maior número possível de uma posição de um array;
+ * @param {Number} rpt A quantidade de array a ser gerados;
+ * @returns {Array} Um array contendo todos os arrays gerados.
+ */
 function createRandomArrays(howManyPositions, maxRandomNumber, rpt) {
     const arrays = []
     
@@ -58,6 +64,15 @@ function createRandomArrays(howManyPositions, maxRandomNumber, rpt) {
     return arrays
 }
 
+/**
+ * @param {Number} howManyPositions A quantidade de posições que cada array possui;
+ * @param {Object} methods Todos os métodos pra achar o k-ésimo menor elemento;
+ * @param {Object} resultsTime Object que contem todos os tempos dos casos de teste;
+ * @param {Number} rpt A quantidade de array gerados;
+ * @param {Array} testArrays O array que contem todos os arrays a serem testados;
+ * @param {String} testCase O nome do caso de teste;
+ * @returns {void} void.
+ */
 function setAverageExecTime(howManyPositions, methods, resultsTime, rpt, testArrays, testCase) {
     for(const method in methods) {
         let averageExecTime = 0
