@@ -1,4 +1,4 @@
-# Resolução da segunda lista de IMPLEX
+# Resolução da terceira lista de IMPLEX
 
 Esse projeto é a solução do nosso grupo para a terceira atividade da disciplina de Implementação Algoritmica na UFMS.
 
