@@ -1,6 +1,6 @@
 # Resolução da terceira lista de IMPLEX
 
-Esse projeto é a solução do nosso grupo para a terceira atividade da disciplina de Implementação Algoritmica na UFMS.
+Esse projeto é a solução do nosso grupo para a quarta atividade da disciplina de Implementação Algoritmica na UFMS.
 
 Discentes: Arthur Cabral, Horiel Costa, Rafael Guardiano.
 
@@ -14,15 +14,17 @@ Com o código fonte clonado no terminal escreva "npm i" e após isso, basta escr
 
 ### Parâmetros para a criação dos casos de teste
 
-Os parâmetros são os mesmos descritos na atividade e para alterá-los basta passar eles como parametros na linha de comando. Dessa forma, o comando "node main.js 10000 100000 10000 20 70000" representaria que:
+Os parâmetros são respectivamente o tamanho inicial da barra, o tamanho final dela e a distância entre dois valores da barra. Para alterá-los basta passar eles como parametros na linha de comando. Dessa forma, o comando "node main.js 10 100 10" representaria que:
 
---> inc = 10000
---> fim = 100000
---> spt = 10000
---> rpt = 20
---> maxRandomNumber = 70000
+--> inicialLength = 10
+--> finalLength = 100
+--> spt = 10
 
-Os quatro primeiros parâmetros estão especificados na atividade e o último representa o inteiro máximo que pode fazer parte de um caso de teste. Os valores defaults podem ser observados entre as linhas 11 e 15 do arquivo main.js.
+Os valores defaults podem ser observados entre as linhas 11 e 15 do arquivo main.js.
+
+## Considerações do projeto
+
+Caso na escolha de parâmetros haja algum momento em que o tamanho da barra seja maior que 7300, pode ser que aconteça estouro de memórias por causa das chamadas recursivas, isso ocorreu durante o desenvolvimento da implementação da atividade.
 
 ## Retorno do projeto
 

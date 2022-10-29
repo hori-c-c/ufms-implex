@@ -13,7 +13,7 @@ function randomInt(maxNumber = 65535) {
  * @param {Number} howManyTests A quantidade de casos de teste;
  * @returns {String} Uma string formata como tabela.
  */
-function formatText(object, howManyTests) {
+ function formatText(object, howManyTests) {
     let result = ''
 
     for(const testType in object) {
@@ -46,52 +46,35 @@ function formatText(object, howManyTests) {
  * @param {Number} rpt A quantidade de array a ser gerados;
  * @returns {Array} Um array contendo todos os arrays gerados.
  */
-function createRandomArrays(howManyPositions, maxRandomNumber, rpt) {
-    const arrays = []
+function createPriceArray(barLength) {
+    const priceArray = []
+    const densityArray = []
     
-    for(let counter = 0; counter < rpt; counter++) {
-        const randomArray = []
-
-        for(let position = 0; position < howManyPositions; position++) {
-            const number = randomInt(maxRandomNumber)
-            randomArray.push(number)
-        }
-
-        randomArray.push(randomInt(howManyPositions - 1) + 1)
-        arrays.push(randomArray)
+    for(let length = 0; length <= barLength; length++) {
+        const price = randomInt(10)
+        priceArray.push(price)
     }
 
-    return arrays
+    return densityArray, priceArray
 }
 
-/**
- * @param {Number} howManyPositions A quantidade de posições que cada array possui;
- * @param {Object} methods Todos os métodos pra achar o k-ésimo menor elemento;
- * @param {Object} resultsTime Object que contem todos os tempos dos casos de teste;
- * @param {Number} rpt A quantidade de array gerados;
- * @param {Array} testArrays O array que contem todos os arrays a serem testados;
- * @param {String} testCase O nome do caso de teste;
- * @returns {void} void.
- */
-function setAverageExecTime(howManyPositions, methods, resultsTime, rpt, testArrays, testCase) {
-    for(const method in methods) {
-        let averageExecTime = 0
-
-        if(resultsTime[testCase][method] == undefined)
-            resultsTime[testCase][method] = {}
-
-        for(const testArray of testArrays) {
-            const array = testArray.slice() //Making a non reference copy
-            const k = array.pop()
-            const inicialTime = performance.now()
-            const kSmallestValue = methods[method][0](array, k)
-            const execTime = (performance.now() - inicialTime)
-            averageExecTime += execTime
-        }
-
-        averageExecTime = (averageExecTime/rpt).toFixed(6).substring(0,7)
-        resultsTime[testCase][method][howManyPositions] = averageExecTime
+function createDensityArray(priceArray) {
+    const densityArray = []
+    
+    for(let position = 0; position < priceArray.length; position++) {
+        const price = priceArray[position]
+        densityArray.push(price/position)
     }
+
+    return densityArray
 }
 
-module.exports = { createRandomArrays, formatText, randomInt, setAverageExecTime }
+function getPercentage(barLength, resultsTime) {
+    const vDP = resultsTime.vDP[barLength]
+    const vGreedy = resultsTime.vGreedy[barLength]
+    const percentage = (vGreedy/vDP * 100).toFixed(2)
+    
+    resultsTime.percentage[barLength] = percentage
+}
+
+module.exports = { createDensityArray, createPriceArray, formatText, getPercentage, randomInt }
