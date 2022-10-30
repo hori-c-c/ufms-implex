@@ -1,6 +1,6 @@
 /**
  * @param {Number} maxNumber O maior número possível;
- * @returns {Number} Um número entre 0 e maxNumber.
+ * @returns {Number} Um número entre 1 e maxNumber.
  */
 function randomInt(maxNumber = 65535) {
     const int = Math.floor(Math.random() * maxNumber)
@@ -34,18 +34,25 @@ function randomInt(maxNumber = 65535) {
     return result
 }
 
+/**
+ * @param {Number} barLength O tamanho inicial da barra;
+ * @returns {Array} O array de preços para cada tamanho da barra.
+ */
 function createPriceArray(barLength) {
     const priceArray = []
-    const densityArray = []
     
     for(let length = 0; length <= barLength; length++) {
         const price = randomInt(10)
         priceArray.push(price)
     }
 
-    return densityArray, priceArray
+    return priceArray
 }
 
+/**
+ * @param {Array} priceArray O array contendo os preços para os tamanhos da barra;
+ * @returns {Array} O array contendo as densidades para cada tamanho da barra.
+ */
 function createDensityArray(priceArray) {
     const densityArray = []
     
@@ -57,6 +64,11 @@ function createDensityArray(priceArray) {
     return densityArray
 }
 
+/**
+ * @param {Number} barLength O tamanho da barra;
+ * @param {Object} resultsTime Object que contem todos os tempos dos casos de teste;
+ * @returns {void}
+ */
 function getPercentage(barLength, resultsTime) {
     const vDP = resultsTime.vDP[barLength]
     const vGreedy = resultsTime.vGreedy[barLength]
