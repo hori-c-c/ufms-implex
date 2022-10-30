@@ -1,11 +1,10 @@
-const { performance } = require('perf_hooks')
-
 /**
  * @param {Number} maxNumber O maior número possível;
  * @returns {Number} Um número entre 0 e maxNumber.
  */
 function randomInt(maxNumber = 65535) {
-    return Math.floor(Math.random() * maxNumber)
+    const int = Math.floor(Math.random() * maxNumber)
+    return int == 0 ? 1 : int
 }
 
 /**
@@ -35,12 +34,6 @@ function randomInt(maxNumber = 65535) {
     return result
 }
 
-/**
- * @param {Number} howManyPositions A quantidade de posições que cada array possui;
- * @param {Number} maxRandomNumber O maior número possível de uma posição de um array;
- * @param {Number} rpt A quantidade de array a ser gerados;
- * @returns {Array} Um array contendo todos os arrays gerados.
- */
 function createPriceArray(barLength) {
     const priceArray = []
     const densityArray = []
@@ -69,7 +62,7 @@ function getPercentage(barLength, resultsTime) {
     const vGreedy = resultsTime.vGreedy[barLength]
     const percentage = (vGreedy/vDP * 100).toFixed(2)
     
-    resultsTime.percentage[barLength] = percentage
+    resultsTime.percentage[barLength] = percentage + '%'
 }
 
 module.exports = { createDensityArray, createPriceArray, formatText, getPercentage, randomInt }
