@@ -14,27 +14,22 @@ function randomInt(maxNumber = 65535) {
  * @returns {String} Uma string formata como tabela.
  */
  function formatText(object, howManyTests) {
-    let result = ''
+    let result = 'n          '
 
-    for(const testType in object) {
-        result = result + `[[${testType}]]\n\n${' '.repeat(3)}n${' '.repeat(4)}`
+    for(const key in object)
+        result += `${key}` + `${' '.repeat(10)}`
 
-        for(const sortMethod in object[testType])
-            result += `${sortMethod}` + `${' '.repeat(6 - sortMethod.length + 7)}`
+    result += '\n' + `${'-'.repeat(81)}` + '\n'
+    
+    for(let i = 0; i < howManyTests; i++) {
+        for(const key in object) {
+            const value = Object.keys(object[key])[i]
+            
+            if(key == 'vDP')
+                result += '\n' + `${value}` + `${' '.repeat(11 - value.length)}` 
 
-        result += '\n' + `${'-'.repeat(54)}` + '\n'
-        
-        for(let i = 0; i < howManyTests; i++) {
-            for(const sortMethod in object[testType]) {
-                const key = Object.keys(object[testType][sortMethod])[i]
-                if(sortMethod == 'QuickSort')
-                    result += '\n' + `${key}` + `${' '.repeat(8 - key.length)}` 
-
-                result += `${object[testType][sortMethod][key]}` + `${' '.repeat(6)}`
-            }
+            result += `${object[key][value]}` + `${' '.repeat(key.length + 10 - `${object[key][value]}`.length)}`
         }
-
-        result += '\n\n\n'
     }
 
     return result
