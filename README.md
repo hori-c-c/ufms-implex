@@ -1,6 +1,6 @@
 # Resolução da terceira lista de IMPLEX
 
-Esse projeto é a solução do nosso grupo para a quarta atividade da disciplina de Implementação Algoritmica na UFMS.
+Esse projeto é a solução do nosso grupo para a quinta atividade da disciplina de Implementação Algoritmica na UFMS.
 
 Discentes: Arthur Cabral, Horiel Costa, Rafael Guardiano.
 
@@ -14,7 +14,7 @@ Com o código fonte clonado no terminal escreva "npm i" e após isso, basta escr
 
 ### Parâmetros para a criação dos casos de teste
 
-Os parâmetros são respectivamente o tamanho inicial da barra, o tamanho final dela e a distância entre dois valores da barra. Para alterá-los basta passar eles como parametros na linha de comando. Dessa forma, o comando "node main.js 10 100 10" representaria que:
+Os parâmetros são respectivamente o número inicial de vértices do grafo, o número final de vértices e a distância entre dois valores de caso de teste. Para alterá-los basta passar eles como parametros na linha de comando. Dessa forma, o comando "node main.js 10 100 10" representaria que:
 
 --> inicialLength = 10
 --> finalLength = 100
@@ -22,15 +22,14 @@ Os parâmetros são respectivamente o tamanho inicial da barra, o tamanho final 
 
 Os valores defaults podem ser observados entre as linhas 8 e 10 do arquivo main.js.
 
-## Considerações do projeto
+Caso queira mudar a probabilidade de criação de uma aresta, basta ir no arquivo utils.js na linha 29 e alterar a condição para o valor desejado.
 
-Caso na escolha de parâmetros haja algum momento em que o tamanho da barra seja maior que 7300, pode ser que aconteça estouro de memórias por causa das chamadas recursivas na função memorizerBarCutAux, isso ocorreu durante o desenvolvimento da implementação da atividade.
 
-Outro ponto interessante a se comentar é que o algoritmo guloso se comportou muito bem nos nossos testes, provavelmente pela da densidade como parâmetro para ele escolher o tamanho da barra. No meio de vários testes ocorreu casos em que o algoritmo de guloso retornou um valor menor que o da programação dinâmica, mas foram bem raros.
+## Considerações da atividade
 
+--> A probabilidade escolhida para criação de uma aresta foi de 0,2% pelo fato de que conforme o número de vértices aumenta, fica muito raro ver gráficos bipartidos, dessa forma, a escolha de um valor baixo é para facilitar a ocorrência deles;
+
+--> A parte de inicialização dos atributos dos vértices está sendo feita na própria criação desses, tirando essa responsabilidade da função de busca em largura. Além disso, foram feitos alguns pequenos ajustes para atender a proposta do exercício.
 ## Retorno do projeto
 
- Ao fim da execução do programa haverá uma pasta "out" localizada na raiz do projeto com um arquivo result.txt contendo os tempos de execução de cada algoritmo para cada caso de teste.
-
- ## Gráficos 
- Os gráficos estao localizados na pasta graphs. Foram gerados a partir do gnuplot como solicitado.
+ Ao fim da execução do programa haverá uma pasta "out" localizada na raiz do projeto com um arquivo result.txt contendo o número de vértices, o número de arestas e a informação se o grafo é ou não bipartido para cada caso de teste.
