@@ -6,7 +6,7 @@ const path = require('path')
 
 const arguments = process.argv
 const inicialLength = parseInt(arguments[2]) || 10
-const finalLength = parseInt(arguments[3]) || 500
+const finalLength = parseInt(arguments[3]) || 750
 const spt = parseInt(arguments[4]) || 10
 const result = {
     'V': [],
@@ -20,9 +20,13 @@ for(let numberOfVertices = inicialLength; numberOfVertices <= finalLength; numbe
     const singlyLinkedList = createSinglyLinkedList(numberOfVertices)
     const numberOfEdges = addEdges(singlyLinkedList)
 
-    for (const vertice of singlyLinkedList)
+    for (const vertice of singlyLinkedList) {
         if (vertice.color == 'white')
             isBipartite = bfs(vertice, isBipartite, singlyLinkedList)
+        
+        if (!isBipartite)
+            break
+    }
     
     updateResult(isBipartite, numberOfEdges, numberOfVertices, result)
     howManyTests ++

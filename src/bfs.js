@@ -22,8 +22,8 @@ function bfs(inicialVertice, isBipartite, singlyLinkedList) {
                 
                 queue.push(verticeAtLinkedList)
             }
-            else if (singlyLinkedList[vertice.id].color == 'gray')
-                isBipartite = false
+            else if (singlyLinkedList[vertice.id].color == 'gray' && singlyLinkedList[vertice.id].distance == verticeRemoved.distance)
+                return false
             
             vertice = vertice.next
         }
